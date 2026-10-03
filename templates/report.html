@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Generated Report</h2>
+<div class="card mt-4 p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>SOC Incident Report</h3>
+        <button class="btn btn-outline-primary" onclick="window.print()">Print / PDF</button>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h5>Executive Summary</h5>
+            <p>Analysis completed over {{ results.stats.total_events }} events. Detected a total of {{ results.alerts|length }} alerts.</p>
+        </div>
+        <div class="col-md-6">
+            <h5>Severity Breakdown</h5>
+            <ul>
+                <li>Critical: {{ results.stats.critical }}</li>
+                <li>High: {{ results.stats.high }}</li>
+                <li>Medium: {{ results.stats.medium }}</li>
+                <li>Low: {{ results.stats.low }}</li>
+                <li>Info: {{ results.stats.info }}</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h5>Key Findings</h5>
+    <ul>
+        {% for chain in results.chains %}
+        <li><strong>Attack Chain Detected:</strong> {{ chain.description }} (Source: {{ chain.source_ip }})</li>
+        {% endfor %}
+    </ul>
+    
+    <h5>Extracted IOCs</h5>
+    <ul>
+        {% for ioc in results.iocs %}
+        <li>{{ ioc.type }}: {{ ioc.value }} (Risk: {{ ioc.risk }})</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

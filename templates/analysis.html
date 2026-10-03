@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Advanced Analysis</h2>
+
+<h4 class="mt-4">Correlated Attack Chains</h4>
+{% for chain in chains %}
+<div class="card p-3 border-danger mb-3">
+    <h5>Chain Origin: {{ chain.source_ip }}</h5>
+    <p>{{ chain.description }}</p>
+    <span class="badge bg-danger">Severity: {{ chain.severity }}</span>
+</div>
+{% else %}
+<p>No attack chains detected.</p>
+{% endfor %}
+
+<h4 class="mt-4">Anomalies</h4>
+{% for anom in anomalies %}
+<div class="card p-3 mb-3">
+    <h5>{{ anom.type }}</h5>
+    <p>{{ anom.description }}</p>
+</div>
+{% else %}
+<p>No anomalies detected.</p>
+{% endfor %}
+{% endblock %}

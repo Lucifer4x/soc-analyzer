@@ -1,0 +1,30 @@
+- id: SIG-01
+  name: SQL Injection Attack
+  description: Detected SQL injection patterns in web request
+  severity: critical
+  mitre_technique_id: T1190
+  pattern: (UNION\s+SELECT|OR\s+1=1|DROP\s+TABLE|WAITFOR\s+DELAY)
+- id: SIG-02
+  name: Cross-Site Scripting (XSS)
+  description: Detected XSS payload in web request
+  severity: high
+  mitre_technique_id: T1190
+  pattern: (<script>|javascript:|onerror=)
+- id: SIG-03
+  name: Directory Traversal
+  description: Attempt to access unauthorized directories
+  severity: high
+  mitre_technique_id: T1190
+  pattern: (\.\./\.\./|/etc/passwd|/etc/shadow)
+- id: SIG-04
+  name: Malicious Scanner User-Agent
+  description: Suspicious automated scanner detected
+  severity: medium
+  mitre_technique_id: T1595
+  pattern: (sqlmap|nikto|nmap|masscan)
+- id: SIG-05
+  name: Command Injection
+  description: OS command injection attempt
+  severity: critical
+  mitre_technique_id: T1059
+  pattern: (;\s*id|\|\s*whoami|`whoami`)

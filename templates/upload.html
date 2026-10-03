@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Upload Logs</h2>
+<div class="card mt-4 p-5 text-center" id="dropzone" style="border: 2px dashed #30363d; cursor: pointer;">
+    <h4>Drag and drop log files here</h4>
+    <p>or</p>
+    <input type="file" id="fileInput" multiple style="display:none;">
+    <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">Browse Files</button>
+</div>
+<div id="progress" class="mt-3" style="display:none;">
+    <p>Analyzing...</p>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    const fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change', uploadFiles);
+    
+    function uploadFiles() {
+        const formData = new FormData();
+        for(let i=0; i<fileInput.files.length; i++){
+            formData.append('files[]', fileInput.files[i]);
+        }
+        document.getElementById('progress').style.display = 'block';
+        fetch('/upload', { method: 'POST', body: formData })
+            .then(res => res.json())
+            .then(data => { window.location.href = data.redirect; });
+    }
+</script>
+{% endblock %}

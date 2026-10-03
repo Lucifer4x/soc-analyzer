@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>MITRE ATT&CK Mapping</h2>
+<div class="row mt-4">
+    {% for tid, data in mitre.items() %}
+    <div class="col-md-4 mb-3">
+        <div class="card p-3 border-danger">
+            <h5>{{ tid }} - {{ data.info.name }}</h5>
+            <p class="text-muted">{{ data.info.tactic }}</p>
+            <p>Detections: {{ data.count }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Extracted IOCs</h2>
+<div class="card mt-4 p-3">
+    <table class="table">
+        <thead><tr><th>Type</th><th>Value</th><th>Risk</th></tr></thead>
+        <tbody>
+            {% for ioc in iocs %}
+            <tr><td>{{ ioc.type }}</td><td>{{ ioc.value }}</td><td>{{ ioc.risk }}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

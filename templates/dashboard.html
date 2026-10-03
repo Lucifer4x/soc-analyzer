@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Dashboard</h2>
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="card p-3 text-center">
+            <h5>Total Events</h5>
+            <h3>{{ results.stats.total_events }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-3 text-center">
+            <h5>Critical Alerts</h5>
+            <h3 class="text-danger">{{ results.stats.critical }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-3 text-center">
+            <h5>High Alerts</h5>
+            <h3 class="text-warning">{{ results.stats.high }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-3 text-center">
+            <h5>IOCs Found</h5>
+            <h3>{{ results.iocs|length }}</h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card p-3">
+            <canvas id="severityChart"></canvas>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    var ctx = document.getElementById('severityChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Critical', 'High', 'Medium', 'Low', 'Info'],
+            datasets: [{
+                data: [{{ results.stats.critical }}, {{ results.stats.high }}, {{ results.stats.medium }}, {{ results.stats.low }}, {{ results.stats.info }}],
+                backgroundColor: ['#da3633', '#d29922', '#d2a8ff', '#58a6ff', '#3fb950'],
+                borderColor: '#161b22'
+            }]
+        },
+        options: { plugins: { legend: { labels: { color: '#c9d1d9' } } } }
+    });
+</script>
+{% endblock %}

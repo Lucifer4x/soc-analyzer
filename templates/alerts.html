@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Alerts</h2>
+<div class="card mt-4">
+    <table class="table table-striped mb-0">
+        <thead>
+            <tr>
+                <th>Severity</th>
+                <th>Name</th>
+                <th>Source IP</th>
+                <th>MITRE ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alert in alerts %}
+            <tr>
+                <td><span class="badge badge-{{ alert.severity }}">{{ alert.severity }}</span></td>
+                <td>{{ alert.name }}<br><small class="text-muted">{{ alert.description }}</small></td>
+                <td>{{ alert.source_ip }}</td>
+                <td>{{ alert.mitre_technique_id }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
